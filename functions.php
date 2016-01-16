@@ -7,7 +7,20 @@ add_action('pre_get_posts', 'levemand_show_custom_post_types_on_frontpage');
 add_filter( 'excerpt_length', 'levemand_excerpt_length', 999 );
 
 function levemand_excerpt_length( $length ) {
-    return 200;
+    return 55;
+}
+
+/**
+ * Create Levemand specific excerpt for list pages.
+ */
+function levemand_excerpt() {
+    $excerpt = get_the_content();
+    $excerpt = do_shortcode($excerpt);
+    $excerpt = str_replace(['</h1', '</h2', '</h3'], '<br', $excerpt);
+    $excerpt = strip_tags($excerpt, '<br>');
+    $excerpt = implode(' ', array_slice(explode(' ', $excerpt), 0, levemand_excerpt_length(0)));
+
+    return $excerpt;
 }
 
 function levemand_show_custom_post_types_on_frontpage($query) {
