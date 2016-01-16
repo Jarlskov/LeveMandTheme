@@ -2,10 +2,12 @@
     $cfs = CFS();
 
     $breweries = array();
-    foreach ($cfs->get('brewery') as $brewery) {
-        $url = get_permalink($brewery);
-        $title = get_the_title($brewery);
-        $breweries[] = "<a href='$url'>$title</a>";
+    if ($cfs->get('brewery')) {
+        foreach ($cfs->get('brewery') as $brewery) {
+            $url = get_permalink($brewery);
+            $title = get_the_title($brewery);
+            $breweries[] = "<a href='$url'>$title</a>";
+        }
     }
     if ($cfs->get('brewery_name')) {
         $breweries[] = $cfs->get('brewery_name');

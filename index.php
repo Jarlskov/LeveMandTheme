@@ -33,15 +33,15 @@ get_header(); ?>
                 ?>
             </header>
             <div class="entry-content" <?php hybrid_attr( 'entry-content' ); ?>>
-                    <?php if (has_post_thumbnail()) :?>
-                        <a href="<?php the_permalink();?>">
-                            <figure class="wp-caption alignright">
-                                <?php the_post_thumbnail('medium');?>
-                                <figcaption class="wp-caption-text"><?= get_post(get_post_thumbnail_id())->post_excerpt;?></figcaption>
-                            </figure>
-                        </a>
-                    <?php endif;?>
-                    <?= levemand_excerpt();?>
+                <?php if (has_post_thumbnail()) :?>
+                    <a href="<?php the_permalink();?>">
+                        <figure class="wp-caption alignright">
+                            <?php the_post_thumbnail('medium');?>
+                            <figcaption class="wp-caption-text"><?= get_post(get_post_thumbnail_id())->post_excerpt;?></figcaption>
+                        </figure>
+                    </a>
+                <?php endif;?>
+                <?= levemand_excerpt();?>
                 <?= toivo_lite_excerpt_more();?>
             </div>
         </div>
