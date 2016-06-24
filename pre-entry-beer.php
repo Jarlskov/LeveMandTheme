@@ -37,13 +37,21 @@
 ?>
 
 <p>
-    <b>Bryggeri:</b> <?= implode(' / ', $breweries);?><br>
+    <?php if (!empty($breweries)): ?>
+        <b>Bryggeri:</b> <?= implode(' / ', $breweries);?><br>
+    <?php endif; ?>
     <?php if (!empty($brewedAt)): ?>
         <b>Brygget hos:</b> <?= $brewedAt; ?><br>
     <?php endif; ?>
-    <b>Type:</b> <?= $beerType; ?><br>
-    <b>Land:</b> <?= $cfs->get('country'); ?><br>
-    <b>Alkoholstyrke:</b> <?= $cfs->get('alcohol'); ?>%<br>
+    <?php if (!empty($beerType)): ?>
+        <b>Type:</b> <?= $beerType; ?><br>
+    <?php endif; ?>
+    <?php if (!empty($cfs->get('country'))): ?>
+        <b>Land:</b> <?= $cfs->get('country'); ?><br>
+    <?php endif;?>
+    <?php if (!empty($cfs->get('alcohol'))): ?>
+        <b>Alkoholstyrke:</b> <?= $cfs->get('alcohol'); ?>%<br>
+    <?php endif; ?>
     <?php if ($cfs->get('ibu')): ?>
         <b>IBU:</b> <?= $cfs->get('ibu'); ?><br>
     <?php endif; ?>
