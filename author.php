@@ -30,7 +30,7 @@
             </p>
             <p>
                 <h2>Biografi</h2>
-                <?= $curauth->description; ?>
+                <?= nl2br($curauth->description); ?>
             </p>
         </div>
 <?php
