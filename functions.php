@@ -122,3 +122,13 @@ add_filter( 'mc4wp_form_css_classes', function( $classes ) {
     $classes[] = 'post-bottom-form';
     return $classes;
 });
+
+/**
+ * Add additional custom post types to main RSS feed.
+ */
+function add_custom_post_types_to_rss_feed( $args ) {
+    if ( isset( $args['feed'] ) && !isset( $args['post_type'] ) )
+        $args['post_type'] = array( 'post', 'beer', 'brewery', 'beertype' );
+    return $args;
+}
+add_filter( 'request', 'add_custom_post_types_to_rss_feed' );
