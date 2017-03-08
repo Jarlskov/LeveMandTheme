@@ -51,7 +51,8 @@ foreach ($fields as $field => $name) {
                 <?php if ($has_header_content): ?>
                     <p>
                         <?php foreach ($fields as $field => $data): ?>
-                            <?php if ($url = $cfs->get($field)):?>
+                            <?php $url = $cfs->get($field);?>
+                            <?php if (!empty($url['url'])):?>
                                 <b><?= $data['label'];?>:</b> <a href="<?= $url['url'] ?>" target="<?= $url['target'];?>"><?= $url['text'];?></a><br>
                             <?php endif; ?>
                         <?php endforeach; ?>
